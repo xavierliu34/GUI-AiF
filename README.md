@@ -5,6 +5,6 @@
 </p>
 
 <p align="center">
-  <a href="(https://arxiv.org/abs/2601.20732)"><img src="https://img.shields.io/badge/Paper-Arxiv-red"></a>
+  <a href="https://arxiv.org/abs/2601.20732"><img src="https://img.shields.io/badge/Paper-Arxiv-red"></a>
   <a href="https://github.com/xavierliu34/GUI-AiF"><img src="https://img.shields.io/badge/Code-GitHub-black"></a>
 </p>
