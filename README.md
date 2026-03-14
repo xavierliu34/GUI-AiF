@@ -8,3 +8,13 @@
   <a href="https://arxiv.org/abs/2601.20732"><img src="https://img.shields.io/badge/Paper-Arxiv-red"></a>
   <a href="https://github.com/xavierliu34/GUI-AiF"><img src="https://img.shields.io/badge/Code-GitHub-black"></a>
 </p>
+
+<hr>
+
+<p align="center">
+  <img src="assets/arch_01.png"  width="80%">
+</p>
+
+<p align="center">
+  <em>GUI-AiF advances the RFT paradigm by shaping grounding rewards: APR-iF encourages diverse interaction points, while ARR-iF refines element regions. Together, GUI-AiF enables agents to better adapt to varying interaction locations and element scales.</em>
+</p>
