@@ -65,8 +65,11 @@ example_training_json.json
 ```
 
 To evaluate:
+
+```bash
 run screenspotpro_test.py
 ```
+
 You should configure:
 * `Qwen_path` : Your trained model path
 * `Screenspot_imgs` : ScreenSpot-Pro images path
