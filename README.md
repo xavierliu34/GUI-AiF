@@ -25,8 +25,20 @@
   <img src="assets/guicl_01.png" alt="Motivation Chart" width="75%">
 </p>
 
-<p align="center">
-  <em>Continual GUI Agents operate under evolving scenarios: domain-in-flux (\eg, from Mobile OS to Web OS) and resolution-in-flux (\eg, scaling from 1080p to 4K).</em>
-</p>
+Continual GUI Agents operate under evolving scenarios: domain-in-flux (e.g., from Mobile OS to Web OS) and resolution-in-flux (e.g., scaling from 1080p to 4K).
 
+## Installation
 
+```bash
+conda create -n gui-aif python=3.12
+conda activate gui-aif
+bash setup.sh
+```
+
+then install the dependencies:
+
+```bash
+pip install deepspeed==0.15.4
+pip install filelock
+pip install qwen_vl_utils
+```
