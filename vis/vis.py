@@ -1,4 +1,4 @@
-# vis.py (最终的 BBox 可视化版本)
+
 import argparse
 import math
 import torch
@@ -8,9 +8,8 @@ from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
 from peft import PeftModel
 import cv2
 import os
-import re # <-- 新增
+import re 
 
-# 导入 torch.nn.functional
 import torch.nn.functional as F
 
 def load_model_and_processor(qwen_path, lora_path=None, device="cuda"):
@@ -32,7 +31,7 @@ def load_model_and_processor(qwen_path, lora_path=None, device="cuda"):
     ).eval()
 
     print("\n" + "="*40)
-    print("✅ Model Loaded. Device Map:")
+    print("Model Loaded. Device Map:")
     print(f"PyTorch can see {torch.cuda.device_count()} CUDA devices.")
     
     if hasattr(model, 'hf_device_map'):
@@ -58,9 +57,7 @@ def load_image(image_path):
     return img, rgb
 
 def parse_bbox(bbox_string):
-    """
-    从 "BBOX(x1, y1, x2, y2)" 或 "[x1, y1, x2, y2]" 格式的字符串中提取坐标。
-    """
+
     match = re.search(r'BBOX\((\d+),\s*(\d+),\s*(\d+),\s*(\d+)\)', bbox_string)
     if match:
         coords = [int(g) for g in match.groups()]
@@ -72,14 +69,10 @@ def parse_bbox(bbox_string):
         coords = [int(g) for g in match.groups()]
         return coords # [x1, y1, x2, y2]
         
-    raise ValueError(f"无法从字符串中解析 BBox: {bbox_string}")
+    raise ValueError(f"Can not parseBBox: {bbox_string}")
 
 def draw_gaussian_heatmap(image_shape, bbox):
-    """
-    在 BBox 位置上创建一个高斯模糊热图。
-    image_shape: (h, w, c) or (h, w)
-    bbox: [x1, y1, x2, y2]
-    """
+
     h, w = image_shape[:2]
     
 
@@ -130,7 +123,6 @@ def save_overlay(image_rgb, heatmap, out_path, alpha=0.5):
     """image_rgb: float32 HxWx3 0..1, heatmap: HxW 0..1"""
 
     if heatmap.shape[:2] != image_rgb.shape[:2]:
-        print(f"[warning] 热图 ({heatmap.shape}) 和图像 ({image_rgb.shape}) 尺寸不匹配，强制拉伸。")
         heatmap = cv2.resize(heatmap, (image_rgb.shape[1], image_rgb.shape[0]), interpolation=cv2.INTER_LINEAR)
 
     heat_uint8 = np.uint8(255 * heatmap)
@@ -148,7 +140,6 @@ def main(args):
 
 
     original_image, vis_image = load_image(args.image_path)
-    print(f"[info] 正在处理图像 (原始尺寸): {original_image.size}")
 
 
     prompt_origin = "Find the UI element for the command \"{}\". Respond ONLY with its bounding box in the format BBOX(x1, y1, x2, y2). Do not provide any other text."
@@ -174,8 +165,6 @@ def main(args):
         return_tensors="pt"
     ).to(device)
     
-
-    print("运行 Pass 1 (生成 BBox)...")
     with torch.no_grad():
 
         gen_out = model.generate(
@@ -188,20 +177,16 @@ def main(args):
     generated_ids = gen_out
     generated_text = processor.batch_decode(generated_ids[:, inputs['input_ids'].shape[1]:], skip_special_tokens=True)[0]
     
-    print("\n" + "="*40)
-    print(f"✅ Pass 1 预测的 Bounding Box: {generated_text}")
-    print("="*40 + "\n")
+
 
 
     try:
         bbox_coords = parse_bbox(generated_text) # [x1, y1, x2, y2]
-        print(f"[info] 解析 BBox 坐标为: {bbox_coords}")
+        print(f"[info] parsed BBox coordinates: {bbox_coords}")
     except ValueError as e:
-        print(f"!!! 错误: 无法解析模型输出的 BBox。 {e}")
+        print(f"!!! Error: Cannot parse BBox from model output. {e}")
         return
 
-
-    print("[info] 正在 BBox 位置绘制高斯热图...")
 
     heatmap = draw_gaussian_heatmap(vis_image.shape, bbox_coords)
 
@@ -211,7 +196,7 @@ def main(args):
         os.makedirs(out_dir, exist_ok=True)
     
     save_overlay(vis_image, heatmap, args.output_path, alpha=0.5)
-    print(f"✅ BBox 高斯热图已保存到: {args.output_path}")
+    print(f"BBox heatmap saved to: {args.output_path}")
 
 
 if __name__ == "__main__":
