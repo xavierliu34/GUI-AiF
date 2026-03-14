@@ -63,3 +63,13 @@ Training data should follow the JSONL format demonstrated in:
 ```text
 example_training_json.json
 ```
+
+To evaluate:
+run screenspotpro_test.py
+```
+You should configure:
+* `Qwen_path` : Your trained model path
+* `Screenspot_imgs` : ScreenSpot-Pro images path
+* `Screenspot_test` : ScreenSpot-Pro annotations path
+
+For other benchmarks evaluation, you can modedify this code.
