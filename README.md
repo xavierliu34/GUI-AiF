@@ -18,3 +18,13 @@
 <p align="center">
   <em>GUI-AiF advances the RFT paradigm by shaping grounding rewards: APR-iF encourages diverse interaction points, while ARR-iF refines element regions. Together, GUI-AiF enables agents to better adapt to varying interaction locations and element scales.</em>
 </p>
+
+## Motivation
+
+<p align="center">
+  <img src="assets/guicl_01.png" alt="Motivation Chart" width="100%">
+</p>
+
+<p align="center">
+  <em>Continual GUI Agents operate under evolving scenarios: domain-in-flux (\eg, from Mobile OS to Web OS) and resolution-in-flux (\eg, scaling from 1080p to 4K).</em>
+</p>
