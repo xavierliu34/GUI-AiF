@@ -22,9 +22,11 @@
 ## Motivation
 
 <p align="center">
-  <img src="assets/guicl_01.png" alt="Motivation Chart" width="100%">
+  <img src="assets/guicl_01.png" alt="Motivation Chart" width="75%">
 </p>
 
 <p align="center">
   <em>Continual GUI Agents operate under evolving scenarios: domain-in-flux (\eg, from Mobile OS to Web OS) and resolution-in-flux (\eg, scaling from 1080p to 4K).</em>
 </p>
+
+
