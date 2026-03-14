@@ -42,3 +42,24 @@ pip install deepspeed==0.15.4
 pip install filelock
 pip install qwen_vl_utils
 ```
+
+## Start
+
+Train GUI-AiF on your own data:
+
+```bash
+cd gui-aif
+bash run_grpo.sh
+```
+
+You should configure:
+
+* `DATA_PATH` : Path to your dataset YAML config, where sequentially set the GUI dataset required to train
+* `CKPT_PATH` : Model checkpoint path
+* `LOG_DIR` , `SAVE_PATH` : Output folders
+
+Training data should follow the JSONL format demonstrated in:
+
+```text
+example_training_json.json
+```
