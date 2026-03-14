@@ -76,3 +76,25 @@ You should configure:
 * `Screenspot_test` : ScreenSpot-Pro annotations path
 
 For other benchmarks evaluation, you can modedify this code.
+
+## Acknowledgement
+
+The code is built from [GUI-G<sup>2</sup>](https://github.com/zju-real/GUI-G2).
+
+## Citation
+
+If you use GUI-AiF, please cite our work:
+
+```bibtex
+@misc{liu2026continualguiagents,
+      title={Continual GUI Agents}, 
+      author={Ziwei Liu and Borui Kang and Hangjie Yuan and Zixiang Zhao and Wei Li and Yifan Zhu and Tao Feng},
+      year={2026},
+      eprint={2601.20732},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.20732}, 
+}
+```
+
+If you like our project, please give us a star ⭐ on GitHub.
